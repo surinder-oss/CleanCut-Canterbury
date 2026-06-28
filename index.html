@@ -103,7 +103,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45de
 @keyframes drift{from{transform:translateX(-40px)}50%{transform:translateX(40px)}to{transform:translateX(-40px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .mower{animation:mow 7s ease-in-out infinite}
-@keyframes mow{0%,100%{transform:translateX(0)}50%{transform:translateX(228px)}}
+@keyframes mow{0%,100%{transform:translateX(0)}50%{transform:translateX(168px)}}
 .mow-wheel{transform-origin:0 0;animation:spin 1.1s linear infinite}
 .blade-cut{transform-origin:50% 100%;animation:wave 2.4s ease-in-out infinite}
 @keyframes wave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.82)}}
@@ -119,10 +119,10 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45de
 @keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(.62)}}
 /* window cleaning squeegee */
 .squeegee{animation:sqeg 4.4s ease-in-out infinite}
-@keyframes sqeg{0%,14%{transform:translateY(0)}50%{transform:translateY(28px)}86%,100%{transform:translateY(0)}}
+@keyframes sqeg{0%,14%{transform:translateY(0)}50%{transform:translateY(44px)}86%,100%{transform:translateY(0)}}
 /* inside cleaning mini-vacuum */
 .invac{animation:invac 3.6s ease-in-out infinite}
-@keyframes invac{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+@keyframes invac{0%,100%{transform:translateX(0)}50%{transform:translateX(26px)}}
 /* water blasting spray + droplets */
 .spray{transform-box:fill-box;transform-origin:top right;animation:spray 1.5s ease-in-out infinite}
 @keyframes spray{0%,100%{opacity:.4;transform:scale(.9)}50%{opacity:.82;transform:scale(1.06)}}
@@ -404,181 +404,76 @@ footer{background:#0a1c20;color:#c4d6d1;padding:64px 0 26px}
     <div class="scene" aria-hidden="true">
       <svg viewBox="0 0 480 432" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#bfeaff"/><stop offset="1" stop-color="#e7f7ef"/>
-          </linearGradient>
-          <linearGradient id="lawn" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#7fd05f"/><stop offset="1" stop-color="#4ea93a"/>
-          </linearGradient>
-          <linearGradient id="house" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef6f9"/>
-          </linearGradient>
-          <linearGradient id="brandg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#18a5dd"/><stop offset="1" stop-color="#5cba47"/>
-          </linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfeaff"/><stop offset="1" stop-color="#e7f7ef"/></linearGradient>
+          <linearGradient id="lawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fd05f"/><stop offset="1" stop-color="#4ea93a"/></linearGradient>
+          <linearGradient id="house" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef6f9"/></linearGradient>
+          <linearGradient id="brandg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#18a5dd"/><stop offset="1" stop-color="#5cba47"/></linearGradient>
         </defs>
-
-        <!-- sky -->
         <rect x="0" y="0" width="480" height="432" rx="28" fill="url(#sky)"/>
-
         <!-- sun -->
-        <g class="sun" transform="translate(398,74)">
-          <circle r="26" fill="#ffd44d"/>
-          <g stroke="#ffd44d" stroke-width="5" stroke-linecap="round">
-            <line x1="0" y1="-40" x2="0" y2="-52"/><line x1="0" y1="40" x2="0" y2="52"/>
-            <line x1="-40" y1="0" x2="-52" y2="0"/><line x1="40" y1="0" x2="52" y2="0"/>
-            <line x1="-28" y1="-28" x2="-37" y2="-37"/><line x1="28" y1="28" x2="37" y2="37"/>
-            <line x1="-28" y1="28" x2="-37" y2="37"/><line x1="28" y1="-28" x2="37" y2="-37"/>
-          </g>
-        </g>
-
-        <!-- clouds -->
-        <g class="cloud" fill="#ffffff" opacity=".92">
-          <ellipse cx="120" cy="74" rx="34" ry="19"/><ellipse cx="150" cy="68" rx="26" ry="17"/><ellipse cx="92" cy="80" rx="22" ry="14"/>
-        </g>
-        <g class="cloud c2" fill="#ffffff" opacity=".8">
-          <ellipse cx="300" cy="120" rx="26" ry="14"/><ellipse cx="324" cy="114" rx="20" ry="12"/>
-        </g>
-
-        <!-- birds (fixed positions, gentle drift) -->
-        <g transform="translate(150,84)"><g class="bird" stroke="#3a525a" stroke-width="2.4" fill="none" stroke-linecap="round">
-          <g class="bird-wing"><path d="M0 0 q6 -7 12 0"/><path d="M12 0 q6 -7 12 0"/></g>
-        </g></g>
-        <g transform="translate(316,104)"><g class="bird b2" stroke="#3a525a" stroke-width="2" fill="none" stroke-linecap="round">
-          <g class="bird-wing"><path d="M0 0 q5 -6 10 0"/><path d="M10 0 q5 -6 10 0"/></g>
-        </g></g>
-
-        <!-- house -->
-        <g>
-          <rect x="250" y="150" width="150" height="120" rx="8" fill="url(#house)" stroke="#dfeaee" stroke-width="2"/>
-          <polygon points="244,152 325,104 406,152" fill="#5cba47"/>
-          <polygon points="244,152 325,104 406,152" fill="none" stroke="#4ea93a" stroke-width="2"/>
-          <!-- door -->
-          <rect x="300" y="214" width="34" height="56" rx="4" fill="#18a5dd"/>
-          <circle cx="328" cy="244" r="2.5" fill="#fff"/>
-          <!-- windows with sparkle -->
-          <g>
-            <rect x="266" y="176" width="34" height="32" rx="3" fill="#d8f0fb" stroke="#bfe6f6" stroke-width="2"/>
-            <line x1="283" y1="176" x2="283" y2="208" stroke="#bfe6f6" stroke-width="2"/>
-            <line x1="266" y1="192" x2="300" y2="192" stroke="#bfe6f6" stroke-width="2"/>
-            <g class="sparkle" transform="translate(283,184)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff"/></g>
-          </g>
-          <g>
-            <rect x="350" y="176" width="34" height="32" rx="3" fill="#d8f0fb" stroke="#bfe6f6" stroke-width="2"/>
-            <line x1="367" y1="176" x2="367" y2="208" stroke="#bfe6f6" stroke-width="2"/>
-            <line x1="350" y1="192" x2="384" y2="192" stroke="#bfe6f6" stroke-width="2"/>
-            <g class="sparkle s2" transform="translate(367,200)"><path d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z" fill="#fff"/></g>
-          </g>
-          <g class="sparkle s3" transform="translate(258,168)"><path d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z" fill="#9fe0ff"/></g>
-        </g>
-
+        <g class="sun" transform="translate(428,62)"><circle r="24" fill="#ffd44d"/><g stroke="#ffd44d" stroke-width="5" stroke-linecap="round"><line x1="0" y1="-36" x2="0" y2="-48"/><line x1="0" y1="36" x2="0" y2="48"/><line x1="-36" y1="0" x2="-48" y2="0"/><line x1="36" y1="0" x2="48" y2="0"/><line x1="-25" y1="-25" x2="-34" y2="-34"/><line x1="25" y1="25" x2="34" y2="34"/><line x1="-25" y1="25" x2="-34" y2="34"/><line x1="25" y1="-25" x2="34" y2="-34"/></g></g>
+        <!-- cloud + birds -->
+        <g class="cloud" fill="#ffffff" opacity=".9"><ellipse cx="92" cy="66" rx="32" ry="17"/><ellipse cx="120" cy="60" rx="24" ry="15"/><ellipse cx="66" cy="72" rx="20" ry="13"/></g>
+        <g transform="translate(150,104)"><g class="bird" stroke="#3a525a" stroke-width="2.4" fill="none" stroke-linecap="round"><g class="bird-wing"><path d="M0 0 q6 -7 12 0"/><path d="M12 0 q6 -7 12 0"/></g></g></g>
+        <g transform="translate(196,88)"><g class="bird b2" stroke="#3a525a" stroke-width="2" fill="none" stroke-linecap="round"><g class="bird-wing"><path d="M0 0 q5 -6 10 0"/><path d="M10 0 q5 -6 10 0"/></g></g></g>
         <!-- tree -->
-        <g>
-          <rect x="60" y="208" width="12" height="60" rx="4" fill="#8a6a4a"/>
-          <circle cx="66" cy="196" r="34" fill="#5cba47"/>
-          <circle cx="44" cy="206" r="22" fill="#6cc451"/>
-          <circle cx="88" cy="206" r="22" fill="#4ea93a"/>
-        </g>
-
+        <g><rect x="42" y="236" width="14" height="72" rx="5" fill="#8a6a4a"/><circle cx="49" cy="216" r="32" fill="#5cba47"/><circle cx="28" cy="228" r="21" fill="#6cc451"/><circle cx="70" cy="228" r="21" fill="#4ea93a"/></g>
         <!-- lawn -->
-        <rect x="0" y="268" width="480" height="164" rx="0" fill="url(#lawn)"/>
-        <rect x="0" y="416" width="480" height="16" fill="#3fa12f"/>
-
-        <!-- tall grass that gets cut (left zone) -->
+        <rect x="0" y="300" width="480" height="132" fill="url(#lawn)"/>
+        <rect x="0" y="418" width="480" height="14" fill="#3fa12f"/>
+        <g opacity=".15" stroke="#2f8c25" stroke-width="6"><line x1="0" y1="352" x2="480" y2="352"/><line x1="0" y1="382" x2="480" y2="382"/><line x1="0" y1="410" x2="480" y2="410"/></g>
+        <!-- ===== HOUSE (large) ===== -->
+        <polygon points="146,162 264,94 382,162" fill="#5cba47"/>
+        <polygon points="146,162 264,94 382,162" fill="none" stroke="#4ea93a" stroke-width="2"/>
+        <rect x="160" y="160" width="208" height="148" rx="7" fill="url(#house)" stroke="#dfeaee" stroke-width="2"/>
+        <!-- driveway -->
+        <path d="M236 308 L292 308 L310 374 L218 374 Z" fill="#d4dde0"/>
+        <path d="M243 308 L285 308 L297 350 L231 350 Z" fill="#e3eaec"/>
+        <!-- door -->
+        <rect x="242" y="232" width="44" height="76" rx="5" fill="#18a5dd"/><circle cx="278" cy="272" r="3" fill="#fff"/>
+        <!-- LEFT WINDOW : inside cleaning -->
+        <rect x="184" y="186" width="58" height="50" rx="5" fill="#d8f0fb" stroke="#bfe6f6" stroke-width="2.5"/>
+        <line x1="213" y1="186" x2="213" y2="236" stroke="#bfe6f6" stroke-width="2.5"/><line x1="184" y1="211" x2="242" y2="211" stroke="#bfe6f6" stroke-width="2.5"/>
+        <g class="sparkle s3" transform="translate(199,200)"><path d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z" fill="#fff"/></g>
+        <g transform="translate(190,222)"><g class="invac"><rect x="0" y="-9" width="24" height="11" rx="3" fill="#5cba47"/><rect x="20" y="-18" width="4" height="11" rx="2" fill="#10242a"/><circle cx="6" cy="4" r="2.4" fill="#10242a"/><circle cx="18" cy="4" r="2.4" fill="#10242a"/></g></g>
+        <!-- RIGHT WINDOW : window cleaning -->
+        <rect x="286" y="186" width="58" height="50" rx="5" fill="#d8f0fb" stroke="#bfe6f6" stroke-width="2.5"/>
+        <line x1="315" y1="186" x2="315" y2="236" stroke="#bfe6f6" stroke-width="2.5"/><line x1="286" y1="211" x2="344" y2="211" stroke="#bfe6f6" stroke-width="2.5"/>
+        <g transform="translate(286,190)"><g class="squeegee"><rect x="-1" y="-6" width="60" height="6" rx="3" fill="#0e87bd"/><rect x="26" y="-15" width="8" height="10" rx="2" fill="#10242a"/></g></g>
+        <g class="sparkle s4" transform="translate(330,224)"><path d="M0 -5 L1.3 -1.3 L5 0 L1.3 1.3 L0 5 L-1.3 1.3 L-5 0 L-1.3 -1.3 Z" fill="#fff"/></g>
+        <!-- ===== HEDGE + SHEARS ===== -->
+        <g transform="translate(108,276)">
+          <rect x="0" y="14" width="58" height="26" rx="13" fill="#3fa12f"/>
+          <ellipse cx="14" cy="16" rx="15" ry="12" fill="#5cba47"/><ellipse cx="34" cy="13" rx="15" ry="12" fill="#62c247"/><ellipse cx="50" cy="17" rx="12" ry="10" fill="#5cba47"/>
+          <g fill="#7fd05f"><rect class="clip" x="22" y="2" width="4" height="4" rx="1"/><rect class="clip" x="34" y="2" width="4" height="4" rx="1" style="animation-delay:.8s"/><rect class="clip" x="14" y="3" width="3" height="3" rx="1" style="animation-delay:1.5s"/></g>
+          <g transform="translate(30,-3)"><line x1="3" y1="0" x2="-10" y2="12" stroke="#10242a" stroke-width="2.4" stroke-linecap="round"/><g class="shear-top"><line x1="3" y1="0" x2="-10" y2="4" stroke="#10242a" stroke-width="2.4" stroke-linecap="round"/></g><circle cx="3" cy="0" r="2.2" fill="#0e87bd"/></g>
+        </g>
+        <!-- ===== WATER BLASTER ===== -->
+        <g transform="translate(300,332)">
+          <g transform="rotate(-26)"><rect x="2" y="-4" width="26" height="9" rx="4" fill="#0e87bd"/><rect x="20" y="4" width="10" height="18" rx="3" fill="#10242a"/></g>
+          <g class="spray"><path d="M0 0 L-36 26 L-18 33 L4 8 Z" fill="#a6e0f2" opacity=".55"/></g>
+          <g fill="#bfe9f7"><circle class="wdrop2" cx="-7" cy="7" r="2.2"/><circle class="wdrop2" cx="-16" cy="13" r="2" style="animation-delay:.3s"/><circle class="wdrop2" cx="-25" cy="19" r="1.8" style="animation-delay:.6s"/></g>
+        </g>
+        <!-- ===== SPRINKLER ===== -->
+        <g transform="translate(434,332)">
+          <rect x="-3" y="0" width="6" height="15" rx="2" fill="#10242a"/><rect x="-9" y="14" width="18" height="4" rx="2" fill="#10242a"/>
+          <g class="sprink"><g fill="none" stroke="#a6e0f2" stroke-width="2.6" stroke-linecap="round" opacity=".85"><path d="M0 -3 Q-18 -30 -42 -14"/><path d="M0 -3 Q-13 -26 -30 -16"/><path d="M0 -3 Q-24 -32 -50 -8"/></g></g>
+          <g fill="#bfe9f7"><circle class="wdrop2" cx="-30" cy="-14" r="1.8" style="animation-delay:.2s"/><circle class="wdrop2" cx="-42" cy="-10" r="1.6" style="animation-delay:.6s"/></g>
+        </g>
+        <!-- ===== TALL GRASS + MOWER ===== -->
         <g fill="#3fa12f">
-          <rect class="tallgrass" x="40" y="300" width="5" height="26" rx="2"/>
-          <rect class="tallgrass" x="58" y="296" width="5" height="30" rx="2" style="animation-delay:.2s"/>
-          <rect class="tallgrass" x="76" y="302" width="5" height="24" rx="2" style="animation-delay:.4s"/>
-          <rect class="tallgrass" x="94" y="298" width="5" height="28" rx="2" style="animation-delay:.6s"/>
-          <rect class="tallgrass" x="112" y="300" width="5" height="26" rx="2" style="animation-delay:.3s"/>
-          <rect class="tallgrass" x="130" y="296" width="5" height="30" rx="2" style="animation-delay:.5s"/>
-          <rect class="tallgrass" x="148" y="302" width="5" height="24" rx="2" style="animation-delay:.7s"/>
-          <rect class="tallgrass" x="166" y="298" width="5" height="28" rx="2" style="animation-delay:.15s"/>
-          <rect class="tallgrass" x="184" y="300" width="5" height="26" rx="2" style="animation-delay:.45s"/>
-          <rect class="tallgrass" x="202" y="298" width="5" height="28" rx="2" style="animation-delay:.55s"/>
-          <rect class="tallgrass" x="220" y="300" width="5" height="26" rx="2" style="animation-delay:.25s"/>
-          <rect class="tallgrass" x="238" y="302" width="5" height="24" rx="2" style="animation-delay:.65s"/>
+          <rect class="tallgrass" x="72" y="356" width="6" height="30" rx="3"/><rect class="tallgrass" x="90" y="352" width="6" height="34" rx="3" style="animation-delay:.2s"/><rect class="tallgrass" x="108" y="358" width="6" height="28" rx="3" style="animation-delay:.4s"/><rect class="tallgrass" x="126" y="354" width="6" height="32" rx="3" style="animation-delay:.6s"/><rect class="tallgrass" x="144" y="356" width="6" height="30" rx="3" style="animation-delay:.3s"/><rect class="tallgrass" x="162" y="352" width="6" height="34" rx="3" style="animation-delay:.5s"/><rect class="tallgrass" x="180" y="358" width="6" height="28" rx="3" style="animation-delay:.7s"/><rect class="tallgrass" x="198" y="354" width="6" height="32" rx="3" style="animation-delay:.15s"/>
         </g>
-
-        <!-- grass clippings -->
-        <g class="blade-cut" fill="#7fd05f">
-          <circle cx="60" cy="330" r="2"/><circle cx="120" cy="334" r="2"/><circle cx="180" cy="330" r="2"/><circle cx="220" cy="334" r="2"/>
-        </g>
-
-        <!-- LAWN MOWER (outer group = fixed position on lawn; inner .mower = animation) -->
-        <g transform="translate(20,300)">
-        <g class="mower">
-          <!-- catcher -->
-          <path d="M-6 -2 q-14 0 -16 18 l0 8 l18 0 z" fill="#18a5dd"/>
-          <!-- body -->
-          <rect x="-2" y="-6" width="44" height="26" rx="7" fill="url(#brandg)"/>
-          <rect x="6" y="-3" width="20" height="9" rx="3" fill="#fff" opacity=".5"/>
-          <!-- handle -->
-          <path d="M40 -2 q22 -2 26 -34" fill="none" stroke="#10242a" stroke-width="3.4" stroke-linecap="round"/>
-          <line x1="60" y1="-32" x2="72" y2="-32" stroke="#10242a" stroke-width="3.4" stroke-linecap="round"/>
-          <!-- deck -->
-          <rect x="-4" y="18" width="48" height="8" rx="4" fill="#10242a"/>
-          <!-- wheels -->
-          <g transform="translate(6,26)"><g class="mow-wheel"><circle r="9" fill="#10242a"/><circle r="3.5" fill="#7fd05f"/></g></g>
-          <g transform="translate(34,26)"><g class="mow-wheel"><circle r="9" fill="#10242a"/><circle r="3.5" fill="#7fd05f"/></g></g>
-        </g>
-        </g>
-
-        <!-- short cut grass texture stripes -->
-        <g opacity=".18" stroke="#2f8c25" stroke-width="6">
-          <line x1="0" y1="356" x2="480" y2="356"/><line x1="0" y1="380" x2="480" y2="380"/><line x1="0" y1="404" x2="480" y2="404"/>
-        </g>
-
-        <!-- ===== WINDOW CLEANING: squeegee wiping the right window ===== -->
-        <g transform="translate(350,180)">
-          <g class="squeegee">
-            <rect x="-1" y="-5" width="36" height="4" rx="2" fill="#0e87bd"/>
-            <rect x="15" y="-11" width="5" height="7" rx="1.5" fill="#10242a"/>
-          </g>
-        </g>
-        <g class="sparkle s4" transform="translate(377,199)"><path d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z" fill="#fff"/></g>
-
-        <!-- ===== INSIDE CLEANING: mini vacuum behind left window ===== -->
-        <g transform="translate(269,201)">
-          <g class="invac">
-            <rect x="0" y="-5" width="13" height="6" rx="2" fill="#5cba47"/>
-            <rect x="10" y="-10" width="2.4" height="6" rx="1" fill="#10242a"/>
-            <circle cx="3" cy="2" r="1.4" fill="#10242a"/><circle cx="10" cy="2" r="1.4" fill="#10242a"/>
-          </g>
-        </g>
-
-        <!-- ===== WATER BLASTING: pressure washer on the driveway ===== -->
-        <path d="M299 270 L335 270 L346 305 L288 305 Z" fill="#d4dde0"/>
-        <path d="M303 270 L331 270 L338 292 L296 292 Z" fill="#e1e8ea"/>
-        <g transform="translate(338,266)">
-          <g transform="rotate(-26)"><rect x="2" y="-3" width="17" height="6" rx="3" fill="#0e87bd"/><rect x="13" y="2" width="7" height="12" rx="2" fill="#10242a"/></g>
-          <g class="spray"><path d="M0 0 L-27 21 L-13 26 L3 6 Z" fill="#a6e0f2" opacity=".55"/></g>
-          <g fill="#bfe9f7"><circle class="wdrop2" cx="-4" cy="4" r="1.5"/><circle class="wdrop2" cx="-10" cy="9" r="1.3" style="animation-delay:.3s"/><circle class="wdrop2" cx="-16" cy="14" r="1.2" style="animation-delay:.6s"/></g>
-        </g>
-
-        <!-- ===== HEDGE TRIMMING: shears + clippings (front-left of house) ===== -->
-        <g transform="translate(250,254)">
-          <rect x="0" y="8" width="38" height="18" rx="8" fill="#3fa12f"/>
-          <ellipse cx="9" cy="9" rx="10" ry="8" fill="#5cba47"/>
-          <ellipse cx="22" cy="7" rx="10" ry="8" fill="#62c247"/>
-          <ellipse cx="33" cy="10" rx="8" ry="6" fill="#5cba47"/>
-          <g fill="#7fd05f"><rect class="clip" x="15" y="0" width="3" height="3" rx="1"/><rect class="clip" x="24" y="0" width="3" height="3" rx="1" style="animation-delay:.8s"/><rect class="clip" x="9" y="1" width="2.5" height="2.5" rx="1" style="animation-delay:1.5s"/></g>
-          <g transform="translate(20,-1)">
-            <line x1="2" y1="0" x2="-8" y2="9" stroke="#10242a" stroke-width="2" stroke-linecap="round"/>
-            <g class="shear-top"><line x1="2" y1="0" x2="-8" y2="3" stroke="#10242a" stroke-width="2" stroke-linecap="round"/></g>
-            <circle cx="2" cy="0" r="1.8" fill="#0e87bd"/>
-          </g>
-        </g>
-
-        <!-- ===== SPRINKLER: oscillating water on right lawn ===== -->
-        <g transform="translate(436,300)">
-          <rect x="-2.5" y="0" width="5" height="11" rx="2" fill="#10242a"/>
-          <rect x="-6" y="10" width="12" height="3" rx="1.5" fill="#10242a"/>
-          <g class="sprink"><g fill="none" stroke="#a6e0f2" stroke-width="2" stroke-linecap="round" opacity=".85">
-            <path d="M0 -2 Q-12 -20 -28 -10"/><path d="M0 -2 Q-9 -18 -20 -12"/><path d="M0 -2 Q-16 -22 -34 -6"/>
-          </g></g>
-          <g fill="#bfe9f7"><circle class="wdrop2" cx="-20" cy="-10" r="1.3" style="animation-delay:.2s"/><circle class="wdrop2" cx="-28" cy="-8" r="1.2" style="animation-delay:.6s"/></g>
-        </g>
+        <g transform="translate(48,360)"><g class="mower">
+          <path d="M-7 -3 q-18 0 -20 23 l0 11 l23 0 z" fill="#18a5dd"/>
+          <rect x="-2" y="-9" width="52" height="31" rx="8" fill="url(#brandg)"/>
+          <rect x="8" y="-5" width="24" height="11" rx="3" fill="#fff" opacity=".5"/>
+          <path d="M48 -3 q26 -3 30 -40" fill="none" stroke="#10242a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="72" y1="-43" x2="86" y2="-43" stroke="#10242a" stroke-width="4" stroke-linecap="round"/>
+          <rect x="-5" y="20" width="56" height="9" rx="4" fill="#10242a"/>
+          <g transform="translate(8,30)"><g class="mow-wheel"><circle r="11" fill="#10242a"/><circle r="4" fill="#7fd05f"/></g></g>
+          <g transform="translate(40,30)"><g class="mow-wheel"><circle r="11" fill="#10242a"/><circle r="4" fill="#7fd05f"/></g></g>
+        </g></g>
       </svg>
     </div>
   </div>
