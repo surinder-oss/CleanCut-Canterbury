@@ -464,15 +464,24 @@ footer{background:#0a1c20;color:#c4d6d1;padding:64px 0 26px}
         <g fill="#3fa12f">
           <rect class="tallgrass" x="72" y="356" width="6" height="30" rx="3"/><rect class="tallgrass" x="90" y="352" width="6" height="34" rx="3" style="animation-delay:.2s"/><rect class="tallgrass" x="108" y="358" width="6" height="28" rx="3" style="animation-delay:.4s"/><rect class="tallgrass" x="126" y="354" width="6" height="32" rx="3" style="animation-delay:.6s"/><rect class="tallgrass" x="144" y="356" width="6" height="30" rx="3" style="animation-delay:.3s"/><rect class="tallgrass" x="162" y="352" width="6" height="34" rx="3" style="animation-delay:.5s"/><rect class="tallgrass" x="180" y="358" width="6" height="28" rx="3" style="animation-delay:.7s"/><rect class="tallgrass" x="198" y="354" width="6" height="32" rx="3" style="animation-delay:.15s"/>
         </g>
-        <g transform="translate(48,360)"><g class="mower">
-          <path d="M-7 -3 q-18 0 -20 23 l0 11 l23 0 z" fill="#18a5dd"/>
-          <rect x="-2" y="-9" width="52" height="31" rx="8" fill="url(#brandg)"/>
-          <rect x="8" y="-5" width="24" height="11" rx="3" fill="#fff" opacity=".5"/>
-          <path d="M48 -3 q26 -3 30 -40" fill="none" stroke="#10242a" stroke-width="4" stroke-linecap="round"/>
-          <line x1="72" y1="-43" x2="86" y2="-43" stroke="#10242a" stroke-width="4" stroke-linecap="round"/>
-          <rect x="-5" y="20" width="56" height="9" rx="4" fill="#10242a"/>
-          <g transform="translate(8,30)"><g class="mow-wheel"><circle r="11" fill="#10242a"/><circle r="4" fill="#7fd05f"/></g></g>
-          <g transform="translate(40,30)"><g class="mow-wheel"><circle r="11" fill="#10242a"/><circle r="4" fill="#7fd05f"/></g></g>
+        <g transform="translate(60,356)"><g class="mower">
+          <!-- handle (pushed from the back-left) -->
+          <path d="M2 2 Q-26 -2 -36 -44" fill="none" stroke="#10242a" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="-43" y1="-44" x2="-29" y2="-42" stroke="#10242a" stroke-width="5" stroke-linecap="round"/>
+          <!-- grass catcher bag -->
+          <path d="M-4 8 q-19 1 -21 16 q-1 7 6 8 l15 0 z" fill="#62c247"/>
+          <path d="M-4 8 q-19 1 -21 16 q-1 7 6 8" fill="none" stroke="#3fa12f" stroke-width="1.6"/>
+          <!-- cutting deck / housing -->
+          <path d="M-6 33 L-6 21 Q-6 14 3 14 L45 14 Q53 14 53 22 L53 33 Z" fill="url(#brandg)"/>
+          <rect x="-8" y="28" width="65" height="7" rx="3.5" fill="#0e87bd"/>
+          <!-- engine block on top -->
+          <rect x="9" y="-8" width="30" height="22" rx="4" fill="#13343d"/>
+          <rect x="13" y="-4" width="13" height="9" rx="2" fill="#5cba47"/>
+          <circle cx="35" cy="0" r="4.5" fill="#46606b"/>
+          <rect x="17" y="-14" width="5" height="7" rx="2" fill="#46606b"/>
+          <!-- wheels -->
+          <g transform="translate(5,33)"><g class="mow-wheel"><circle r="12" fill="#10242a"/><circle r="6.5" fill="#cfe9c2"/><circle r="2.2" fill="#10242a"/></g></g>
+          <g transform="translate(45,35)"><g class="mow-wheel"><circle r="9" fill="#10242a"/><circle r="4.8" fill="#cfe9c2"/><circle r="1.7" fill="#10242a"/></g></g>
         </g></g>
       </svg>
     </div>
