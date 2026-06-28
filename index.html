@@ -757,9 +757,9 @@ footer{background:#0a1c20;color:#c4d6d1;padding:64px 0 26px}
         <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.8a16 16 0 006 6l1.3-1.1a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span>
         <div><div class="cl">Call Tiger</div><div class="cv">0210 637 580</div></div>
       </a>
-      <a href="tel:021471573" class="contact-card">
+      <a href="tel:+64211471573" class="contact-card">
         <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.8a16 16 0 006 6l1.3-1.1a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span>
-        <div><div class="cl">Call Mani</div><div class="cv">021 471 573</div></div>
+        <div><div class="cl">Call Mani</div><div class="cv">021 147 1573</div></div>
       </a>
       <a href="mailto:cleancutcanterbury@gmail.com" class="contact-card">
         <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 6 10-6"/></svg></span>
@@ -854,7 +854,7 @@ footer{background:#0a1c20;color:#c4d6d1;padding:64px 0 26px}
       </div>
       <div class="foot">
         <h5>Get In Touch</h5>
-        <div class="ct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.8a16 16 0 006 6l1.3-1.1a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><div>Tiger: <a href="tel:0210637580">0210 637 580</a><br/>Mani: <a href="tel:021471573">021 471 573</a></div></div>
+        <div class="ct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.8a16 16 0 006 6l1.3-1.1a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><div>Tiger: <a href="tel:0210637580">0210 637 580</a><br/>Mani: <a href="tel:+64211471573">021 147 1573</a></div></div>
         <div class="ct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 6 10-6"/></svg><div><a href="mailto:cleancutcanterbury@gmail.com">cleancutcanterbury@gmail.com</a></div></div>
         <div class="ct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div>Canterbury, New Zealand</div></div>
       </div>
@@ -916,22 +916,24 @@ document.getElementById('quoteForm').addEventListener('submit',function(ev){
   ev.preventDefault();
   const g=id=>document.getElementById(id).value.trim();
   const subject=`Quote request — ${g('service')} (${g('name')||'Website'})`;
-  const body=
-`Hi Clean Cut Canterbury team,
-
-I'd like a free quote for:
-
-Service:        ${g('service')}
-Property type:  ${g('type')}
-Name:           ${g('name')}
-Phone:          ${g('phone')}
-Email:          ${g('email')}
-Suburb/Town:    ${g('suburb')}
-
-Details:
-${g('msg')}
-
-Thanks!`;
+  const lines=[
+    'Hi Clean Cut Canterbury team,',
+    '',
+    'I would like to request a free quote. My details are below:',
+    '',
+    'Service needed: '+g('service'),
+    'Property type: '+g('type'),
+    'Name: '+g('name'),
+    'Phone: '+g('phone'),
+    'Email: '+g('email'),
+    'Suburb/Town: '+g('suburb'),
+    '',
+    'Details:',
+    g('msg'),
+    '',
+    'Thanks!'
+  ];
+  const body=lines.join('\r\n');
   window.location.href=`mailto:cleancutcanterbury@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
