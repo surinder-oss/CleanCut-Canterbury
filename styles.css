@@ -126,6 +126,15 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45de
 @keyframes clip{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(22px)}}
 .leaf{position:absolute;top:-30px;opacity:.7;animation:fall linear infinite}
 @keyframes fall{to{transform:translateY(110vh) rotate(380deg)}}
+/* detail-panel scene extras */
+.dmist{animation:dmist 1.5s ease-out infinite}
+@keyframes dmist{0%{opacity:0;transform:translate(0,0) scale(.5)}30%{opacity:.85}100%{opacity:0;transform:translate(16px,-16px) scale(1.1)}}
+.broom{transform-box:fill-box;transform-origin:top center;animation:broom 1.5s ease-in-out infinite}
+@keyframes broom{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(11deg)}}
+.drise{animation:drise 2s ease-out infinite}
+@keyframes drise{0%{opacity:0;transform:translateY(8px) scale(.7)}30%{opacity:.9}100%{opacity:0;transform:translateY(-16px) scale(1.1)}}
+.swish{transform-box:fill-box;transform-origin:top center;animation:swish 1.8s ease-in-out infinite}
+@keyframes swish{0%,100%{transform:translateX(-9px) rotate(-4deg)}50%{transform:translateX(9px) rotate(4deg)}}
 
 /* ============ PAGE HERO (sub pages) ============ */
 .page-hero{padding:140px 0 60px;background:linear-gradient(180deg,#dff3ff 0%,#eaf7f0 100%);position:relative;overflow:hidden}
