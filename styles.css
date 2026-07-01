@@ -2,9 +2,9 @@
    Clean Cut Canterbury — shared stylesheet (multi-page)
    =========================================================== */
 :root{
-  --green:#5cba47; --green-d:#3fa12f; --green-l:#86d36e;
+  --green:#5cba47; --green-d:#15803d; --green-l:#86d36e;
   --blue:#18a5dd; --blue-d:#0e87bd; --blue-l:#5cc8ef;
-  --ink:#10242a; --ink-soft:#3a525a; --muted:#6b8089;
+  --ink:#10242a; --ink-soft:#334a51; --muted:#566d74;
   --bg:#ffffff; --bg-soft:#f3f9f5; --bg-mint:#eaf7f0; --line:#e2ece6;
   --grad:linear-gradient(120deg,var(--blue) 0%,var(--green) 100%);
   --grad-r:linear-gradient(120deg,var(--green) 0%,var(--blue) 100%);
@@ -14,8 +14,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#f5fcf8;line-height:1.6;
   overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* visible keyboard focus for accessibility */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,
+.btn:focus-visible,.svc:focus-visible,.chip:focus-visible,.contact-card:focus-visible{
+  outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+:focus:not(:focus-visible){outline:none}
 h1,h2,h3,h4,.brandfont{font-family:'Poppins',sans-serif;line-height:1.12;letter-spacing:-.01em}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -297,6 +302,12 @@ form.quote{background:#fff;border:1px solid var(--line);border-radius:var(--radi
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 form.quote .btn{width:100%;justify-content:center;margin-top:6px}
 .form-note{font-size:.82rem;color:var(--muted);text-align:center;margin-top:12px}
+.req{color:#c8371f;font-weight:700;margin-left:2px}
+.field-err{color:#c8371f;font-size:.8rem;margin-top:6px;font-weight:600}
+.fld.error input,.fld.error select,.fld.error textarea{border-color:#e0755f;background:#fff6f4}
+.fld.error input:focus,.fld.error select:focus,.fld.error textarea:focus{border-color:#c8371f;box-shadow:0 0 0 4px rgba(200,55,31,.14)}
+.form-success{display:none;margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--bg-mint);
+  border:1px solid #bfe6cd;color:var(--green-d);font-weight:600;font-size:.92rem}
 .socials-row{display:flex;gap:10px;margin-top:8px}
 .socials-row a{width:46px;height:46px;border-radius:13px;background:var(--bg-soft);border:1px solid var(--line);display:grid;place-items:center;transition:.25s}
 .socials-row a:hover{background:var(--grad);transform:translateY(-3px);border-color:transparent}

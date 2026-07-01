@@ -42,12 +42,44 @@
   },{threshold:.6});
   document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
 
-  // quote form -> mailto (each field on its own line, CRLF for mobile mail)
+  // quote form -> validate, then mailto (CRLF line breaks for mobile mail)
   var form=document.getElementById('quoteForm');
   if(form){
+    function g(id){ var el=document.getElementById(id); return el?el.value.trim():''; }
+    function wrap(id){ var el=document.getElementById(id); return el?el.closest('.fld'):null; }
+    function showErr(id,msg){
+      var w=wrap(id); if(!w) return;
+      w.classList.add('error');
+      var e=w.querySelector('.field-err');
+      if(!e){ e=document.createElement('div'); e.className='field-err'; e.setAttribute('aria-live','polite'); w.appendChild(e); }
+      e.textContent=msg;
+      var el=document.getElementById(id); if(el){ el.setAttribute('aria-invalid','true'); }
+    }
+    function clearErr(id){
+      var w=wrap(id); if(!w) return;
+      w.classList.remove('error');
+      var e=w.querySelector('.field-err'); if(e) e.textContent='';
+      var el=document.getElementById(id); if(el){ el.removeAttribute('aria-invalid'); }
+    }
+    function validField(id){
+      var el=document.getElementById(id); if(!el) return true;
+      var v=el.value.trim();
+      if(el.hasAttribute('required') && !v){ showErr(id, 'This field is required'); return false; }
+      if(id==='email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ showErr(id, 'Please enter a valid email'); return false; }
+      clearErr(id); return true;
+    }
+    ['name','phone','email'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.addEventListener('blur', function(){ validField(id); });
+    });
     form.addEventListener('submit',function(ev){
       ev.preventDefault();
-      function g(id){ var el=document.getElementById(id); return el?el.value.trim():''; }
+      var ok=true, firstBad=null;
+      ['name','phone','email'].forEach(function(id){
+        if(!validField(id)){ ok=false; if(!firstBad) firstBad=id; }
+      });
+      if(!ok){ var b=document.getElementById(firstBad); if(b) b.focus(); return; }
+
       var subject='Quote request — '+g('service')+' ('+(g('name')||'Website')+')';
       var lines=[
         'Hi Clean Cut Canterbury team,','',
@@ -63,6 +95,12 @@
       ];
       var body=lines.join('\r\n');
       window.location.href='mailto:cleancutcanterbury@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+
+      // success confirmation
+      var s=form.querySelector('.form-success');
+      if(!s){ s=document.createElement('div'); s.className='form-success'; s.setAttribute('role','status'); form.appendChild(s); }
+      s.textContent='Thanks'+(g('name')?', '+g('name'):'')+'! Your email app should open with your request ready to send. If it doesn’t, email us at cleancutcanterbury@gmail.com or call Mani on 021 147 1573.';
+      s.style.display='block';
     });
   }
 
