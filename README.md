@@ -3,7 +3,11 @@
 Official website for **Clean Cut Canterbury Property Services** — lawn & garden care and complete cleaning services (window, carpet, commercial, residential and post-build) across Canterbury, New Zealand.
 
 ## Live site
-Served via GitHub Pages from this repository. A custom domain (`cleancutcanterbury.co.nz`) can be connected later in **Settings → Pages → Custom domain**.
+**https://cleancutcanterbury.co.nz** — served via GitHub Pages from this repository.
+
+The custom domain is set by the `CNAME` file in the repo root. DNS is managed at Porkbun:
+the apex points at GitHub Pages (4 A + 4 AAAA records) and `www` is a CNAME to
+`surinder-oss.github.io`. Any push to `main` redeploys the live site.
 
 ## Structure
 ```
