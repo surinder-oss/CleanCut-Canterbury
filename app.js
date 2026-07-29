@@ -27,6 +27,35 @@
     if (e.key === 'Escape') setMenu(false);
   });
 
+  /* ---------- WhatsApp: choose Mani or Tiger ---------- */
+  var waToggle = document.getElementById('waToggle');
+  var waOptions = document.getElementById('waOptions');
+  var waWidget = document.getElementById('waWidget');
+
+  function setWa(open) {
+    if (!waOptions || !waToggle) return;
+    waOptions.hidden = !open;
+    waToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  if (waToggle) {
+    waToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setWa(waOptions.hidden);
+    });
+    // clicking anywhere else closes it
+    document.addEventListener('click', function (e) {
+      if (waWidget && !waWidget.contains(e.target)) setWa(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setWa(false);
+    });
+    // picking a person closes it too
+    waOptions.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setWa(false); });
+    });
+  }
+
   /* ---------- quote form -> pre-filled email ---------- */
   var form = document.getElementById('quoteForm');
   if (!form) return;

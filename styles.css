@@ -121,7 +121,10 @@ h3.display{font-size:clamp(1.35rem,2.2vw,1.7rem);margin-bottom:12px}
 .burger span{display:block;width:26px;height:2.5px;background:var(--teal);border-radius:2px;margin:5px 0}
 
 /* mobile drawer */
-.mobile-menu{display:none;position:fixed;inset:0;z-index:120;background:rgba(8,55,62,.45);opacity:0;visibility:hidden;transition:.25s}
+/* overflow:hidden clips the closed panel, which sits translated off to the right —
+   without it the document scrolls sideways on very narrow screens */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:120;background:rgba(8,55,62,.45);
+  opacity:0;visibility:hidden;transition:.25s;overflow:hidden}
 .mobile-menu.open{opacity:1;visibility:visible}
 .mobile-panel{position:absolute;top:0;right:0;height:100%;width:min(86vw,360px);background:#fff;
   padding:22px 22px 40px;overflow-y:auto;transform:translateX(100%);transition:transform .3s ease}
@@ -224,7 +227,11 @@ h3.display{font-size:clamp(1.35rem,2.2vw,1.7rem);margin-bottom:12px}
 .contact-card .ic{width:46px;height:46px;border-radius:11px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex:none}
 .contact-card .ic svg{width:22px;height:22px;stroke:var(--green-d);fill:none;stroke-width:1.9}
 .contact-card strong{display:block;font-size:.95rem;margin-bottom:2px}
-.contact-card span{font-size:.9rem;color:var(--muted)}
+/* the email address is one long unbreakable token — let it wrap or it sets a
+   min-content width wider than the column on small phones */
+.contact-card span{font-size:.9rem;color:var(--muted);overflow-wrap:anywhere}
+.contact-card>span:not(.ic){min-width:0}
+.site-footer a{overflow-wrap:anywhere}
 .form-row{display:grid;gap:16px;margin-bottom:16px}
 .form-row.two{grid-template-columns:1fr 1fr}
 label{display:block;font-size:.86rem;font-weight:500;margin-bottom:7px}
@@ -245,12 +252,29 @@ textarea{min-height:130px;resize:vertical}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.14);padding:22px 0;
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem}
 
-/* ---------- floating WhatsApp ---------- */
-.wa-float{position:fixed;right:18px;bottom:18px;z-index:70;background:#25d366;color:#fff;
+/* ---------- floating WhatsApp (pick a person) ---------- */
+.wa-widget{position:fixed;right:18px;bottom:18px;z-index:70;
+  display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-float{background:#25d366;color:#fff;border:none;cursor:pointer;font-family:var(--sans);
   border-radius:100px;padding:13px 20px;display:inline-flex;align-items:center;gap:9px;
-  font-size:.9rem;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:transform .2s}
-.wa-float:hover{transform:translateY(-3px)}
-.wa-float svg{width:20px;height:20px;fill:#fff}
+  font-size:.9rem;font-weight:500;min-height:46px;
+  box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+.wa-float:hover{transform:translateY(-3px);background:#1eb958}
+.wa-float svg{width:20px;height:20px;fill:#fff;flex:none}
+
+.wa-options{display:flex;flex-direction:column;gap:8px;
+  animation:waIn .18s ease-out}
+.wa-options[hidden]{display:none}
+@keyframes waIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wa-options a{display:flex;align-items:center;gap:12px;background:#fff;color:var(--ink);
+  border-radius:100px;padding:9px 18px 9px 9px;min-height:46px;min-width:196px;
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.45);transition:transform .18s,box-shadow .18s}
+.wa-options a:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,.5)}
+.wa-av{width:34px;height:34px;border-radius:50%;background:#25d366;color:#fff;flex:none;
+  display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.95rem}
+.wa-txt{display:flex;flex-direction:column;line-height:1.25}
+.wa-txt strong{font-size:.92rem;font-weight:600}
+.wa-txt span{font-size:.8rem;color:var(--muted)}
 
 /* ===========================================================
    RESPONSIVE
@@ -303,7 +327,9 @@ textarea{min-height:130px;resize:vertical}
   .footer-bottom{flex-direction:column;text-align:center}
   .brand{height:42px}
   .form-row.two{grid-template-columns:1fr}
-  .wa-float{right:12px;bottom:12px;padding:12px 16px;font-size:.85rem}
+  .wa-widget{right:12px;bottom:12px}
+  .wa-float{padding:12px 18px;font-size:.85rem}
+  .wa-options a{min-width:184px}
   h2.display{font-size:clamp(1.75rem,7vw,2.3rem)}
 }
 
