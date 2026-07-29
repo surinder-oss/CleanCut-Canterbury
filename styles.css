@@ -142,6 +142,10 @@ h3.display{font-size:clamp(1.35rem,2.2vw,1.7rem);margin-bottom:12px}
 /* bias the crop upward so faces stay in frame when the box is shorter than the photo */
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
 .hero-media.wide{aspect-ratio:4/3}
+/* multi-photo composite: must never be cropped, so contain it. The source already has
+   white margins, so a white box makes any letterboxing invisible. */
+.hero-media.collage{background:#fff;max-height:none}
+.hero-media.collage img{object-fit:contain;object-position:center}
 
 /* two-up team portraits */
 .team-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
